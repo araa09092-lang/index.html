@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Login & Profil Siswa</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f6f9;
+            padding: 20px 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 0 15px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .btn-login, .btn-logout {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-login:hover {
+            background-color: #0056b3;
+        }
+        .btn-logout {
+            background-color: #dc3545;
+            margin-top: 20px;
+        }
+        .btn-logout:hover {
+            background-color: #bd2130;
+        }
+        .error-message {
+            color: #d9534f;
+            font-size: 13px;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+        /* Menyembunyikan profil awal */
+        #profile-page {
+            display: none;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #007bff;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        .bio-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            color: #444;
+        }
+        .bio-table td {
+            padding: 5px 0;
+            vertical-align: top;
+        }
+        .bio-table td:first-child {
+            width: 90px;
+            font-weight: bold;
+        }
+        .bio-table td:nth-child(2) {
+            width: 15px;
+        }
+        ul.list-hobi {
+            padding-left: 20px;
+            font-size: 14px;
+            color: #444;
+        }
+        ul.list-hobi li {
+            margin-bottom: 4px;
+        }
+        p.text-content {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .footer {
+            text-align: center;
+            padding-top: 15px;
+            font-size: 13px;
+            color: #777;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HALAMAN LOGIN -->
+        <div class="card" id="login-page">
+            <h2>Login Siswa</h2>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Masukkan Username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Masukkan Password">
+            </div>
+            <button type="button" class="btn-login" onclick="prosesLogin()">Masuk</button>
+            <div id="error-msg" class="error-message">Username atau Password salah!</div>
+        </div>
+
+        <!-- HALAMAN PROFIL (Satu Kotak) -->
+        <div class="card" id="profile-page">
+            <h2>Profil Siswa</h2>
+            
+            <div class="section-title">Biodata</div>
+            <table class="bio-table">
+                <tr>
+                    <td>Nama</td>
+                    <td>:</td>
+                    <td>Mutiara Hayatunnisa</td>
+                </tr>
+                <tr>
+                    <td>Kelas</td>
+                    <td>:</td>
+                    <td>X TJKT 4</td>
+                </tr>
+                <tr>
+                    <td>No Absen</td>
+                    <td>:</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>TTL</td>
+                    <td>:</td>
+                    <td>Tegal, 4 Agustus 2010</td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td>:</td>
+                    <td>Desa Harjosari Lor RT 13/RW 03, Kec. Adiwerna, Kab. Tegal.</td>
+                </tr>
+            </table>
+
+            <div class="section-title">Hobi</div>
+            <ul class="list-hobi">
+                <li>Memotret pemandangan</li>
+                <li>Menulis</li>
+                <li>Mendengarkan musik</li>
+            </ul>
+
+            <div class="section-title">Cita-Cita</div>
+            <p class="text-content">
+                Saya ingin menjadi seorang Fotografer karena saya suka sekali memfoto sesuatu yang menurut saya indah dan berkesan. Selain itu saya suka sekali memegang kamera jadi saya ingin menjadi seorang Fotografer.
+            </p>
+
+            <div class="footer">
+                Terima kasih sudah berkunjung.
+Semoga hari ini dan hari-hari berikutnya selalu dipenuhi kebaikan dan kebahagiaan.ᥫ᭡
+            </div>
+
+            <button type="button" class="btn-logout" onclick="logout()">Keluar / Log Out</button>
+        </div>
+
+    </div>
+
+    <script>
+        function prosesLogin() {
+            const user = document.getElementById('username').value.trim();
+            const pass = document.getElementById('password').value.trim();
+
+            const targetUser = "Mutiara Hayatunnisa TJKT 4";
+            const targetPass = "26.23914";
+
+            // Proses langsung instan tanpa reload halaman
+            if (user.toLowerCase() === targetUser.toLowerCase() && pass === targetPass) {
+                document.getElementById('login-page').style.display = 'none';
+                document.getElementById('profile-page').style.display = 'block';
+                document.getElementById('error-msg').style.display = 'none';
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            document.getElementById('profile-page').style.display = 'none';
+            document.getElementById('login-page').style.display = 'block';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('error-msg').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
